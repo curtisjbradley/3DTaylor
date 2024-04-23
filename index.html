@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<body>
+<script src="https://cdn.plot.ly/plotly-2.31.1.min.js" charset="utf-8"></script>
+<script src="Plot.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjs@12.4.1/lib/browser/math.min.js"></script>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css" type="text/css">
+<div>
+    <label for="formula">Explicit Formula: z(x,y)=</label>
+    <input type="text" id="formula" value="x^2 - y^2">
+
+
+
+    <label for="xymin">XY-Min</label>
+    <input class="formula-data" type="number" id="xymin" value="-5">
+    <label class= for="xymax">XY-Max</label>
+    <input class="formula-data" type="number" id="xymax" value="5">
+    <label for="step">Step</label>
+    <input class="formula-data" type="number" id="step" value="0.1">
+
+
+    <label for="taylorn">Taylor-N</label>
+    <input class="formula-data" type="number" id="taylorn" value="2">
+    <label for="taylorx">Taylor X</label>
+    <input class="formula-data" type="number" id="taylorx" value="0">
+    <label for="taylory">Taylor Y</label>
+    <input class="formula-data" type="number" id="taylory" value="0">
+
+
+
+
+    <button onclick="plotRandom()">Plot</button>
+    <span style="color: red" id="error"></span>
+    <div>
+        Taylor Approximation: <span id="approximation"></span>
+    </div>
+</div>
+
+
+
+<div id="plotreg"></div>
+<div id="plottaylor"></div>
+
+
+    <script>
+       plotRandom()
+</script>
+</body>
+</html>
