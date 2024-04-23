@@ -9,5 +9,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="plotly-2.31.1" level="application" />
+    <orderEntry type="library" name="mathjs" level="application" />
   </component>
 </module>

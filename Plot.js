@@ -87,8 +87,6 @@ function  plotRandom(){
     ];
 
 
-    console.log(data);
-    console.log(taylor)
     document.getElementById("approximation").innerText = taylortext;
     Plotly.newPlot('plotreg', data,{title:"Function"});
     Plotly.newPlot('plottaylor', taylor,{title:"Taylor Approximation"});
