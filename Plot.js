@@ -36,16 +36,7 @@ function  plotRandom(){
 
 
 // Plotting the mesh
-    var data=[
-        {
-            opacity:0.8,
-            color:'rgb(300,100,200)',
-            type: 'mesh3d',
-            x: a,
-            y: b,
-            z: c,
-        }
-    ];
+
     let equations = [];
     const taylorx = parseFloat(document.getElementById('taylorx').value)
     const taylory = parseFloat(document.getElementById('taylory').value)
@@ -75,21 +66,54 @@ function  plotRandom(){
 
 
 
-    var taylor=[
-        {
-            opacity:0.8,
-            color:'rgb(100,100,200)',
-            type: 'mesh3d',
-            x: a,
-            y: b,
-            z: taylorz,
-        }
-    ];
-
-
     document.getElementById("approximation").innerText = taylortext;
-    Plotly.newPlot('plotreg', data,{title:"Function"});
-    Plotly.newPlot('plottaylor', taylor,{title:"Taylor Approximation"});
+    const dataOriginal = {
+        opacity: 0.8,
+        color: 'rgb(300,100,200)',
+        type: 'mesh3d',
+        x: a,
+        y: b,
+        z: c, // 'c' represents the z-values of the original function
+    };
+
+    // Define your mesh data for the Taylor approximation
+    const dataTaylor = {
+        opacity: 0.8,
+        color: 'rgb(100,100,200)',
+        type: 'mesh3d',
+        x: a,
+        y: b,
+        z: taylorz,
+    };
+    const dataTaylorCenter = {
+        type: 'scatter3d', // Scatter plot in 3D
+        mode: 'markers',  // Markers only
+        x: [taylorx],
+        y: [taylory],     // Taylor series expansion y-coordinate
+        z: [taylorEquation.evaluate({ x: taylorx, y: taylory })], // Corresponding z-coordinate
+        marker: {
+            color: 'red', // Color of the marker
+            size: 10,      // Size of the marker
+        },
+        name: 'Taylor Expansion Center' // Name for the legend
+    };
+
+    var data = [dataOriginal, dataTaylor,dataTaylorCenter];
+
+    var layout = {
+        title: 'Function and Taylor Approximation',
+        scene: {
+            xaxis: { title: 'X Axis' },
+            yaxis: { title: 'Y Axis' },
+            zaxis: { title: 'Z Axis' },
+        },
+        automargin: true,
+        height:750
+    };
+
+    // Create a single plot with both datasets
+    Plotly.newPlot('plotreg', data, layout);
+
 }
 
 function nthDer(equ, variable, n){
